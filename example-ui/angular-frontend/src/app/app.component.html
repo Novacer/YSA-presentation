@@ -1,20 +1,39 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading" style="padding-top: 5%; padding-bottom: 5%">Will you survive the titanic???</h2>
+		
+        <label for="inputEmail" style="padding-top: 2.5%;">Class</label>
+        <input type="number" id="inputEmail" class="form-control" placeholder="Class" [(ngModel)]="selectedClass" [ngModelOptions]="{standalone: true}" required autofocus>
+		
+		<label for="age" style="padding-top: 2.5%;">Age</label>
+        <input type="number" id="age" class="form-control" placeholder="Age" [(ngModel)]="age" [ngModelOptions]="{standalone: true}" required autofocus>
+		
+		<label for="sibs" style="padding-top: 2.5%;"># of siblings</label>
+        <input type="number" id="sibs" class="form-control" placeholder="# of Siblings" [(ngModel)]="siblings" [ngModelOptions]="{standalone: true}" required autofocus>
+		
+		<label for="pars" style="padding-top: 2.5%;"># of parents</label>
+        <input type="number" id="pars" class="form-control" placeholder="# of Parents" [(ngModel)]="parents" [ngModelOptions]="{standalone: true}" required autofocus>
+		
+		<label for="tics" style="padding-top: 2.5%;" >cost of ticket</label>
+        <input type="number" id="tics" class="form-control" placeholder="Cost of Tickets" [(ngModel)]="fare" [ngModelOptions]="{standalone: true}" required autofocus>
+		
+		<div *ngFor="let gender of genders; let i = index" style="padding-top: 2.5%;">
+			<div class="radio" (click)="onGenderClick(i)">
+				<label><input type="radio" name="optradio">{{gender}}</label>
+			</div>
+		</div>
+		
+		<ng-container *ngIf="this.survived !== null && this.survived">
+			<h3> YOU LIVE! </h3>
+		</ng-container>
+		<ng-container *ngIf="this.survived !== null && !this.survived">
+			<h3> YOU DEAD! </h3>
+		</ng-container>
+		
+        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onSubmitClick()">Submit</button>
+		
+      </form>
+
+</div> <!-- /container -->
 
