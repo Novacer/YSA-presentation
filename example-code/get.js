@@ -1,3 +1,9 @@
+
+
+/**
+* This is a basic javascript function that returns a promise.
+* Used for dealing with async tasks (like doing an API call)
+*/
 function get(url) {
   // Return a new promise.
   return new Promise(function(resolve, reject) {
