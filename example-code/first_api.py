@@ -6,6 +6,10 @@ from flask import request
 # requests is used to call OTHER people's APIs
 import requests
 
+# Machine Learning model that we just made
+from .machine_learning.titanic import guess_if_survived
+
+
 app = Flask(__name__)
 
 
@@ -49,4 +53,20 @@ def fake_login():
 		response = {'success': False}
 		
 	return jsonify(response)
-
+	
+	
+# Machine Learning POST endpoint example
+@app.route("/api/post/survived-titanic", methods=['POST'])
+def survived_titanic():
+	features = request.get_json()
+	
+	survived = guess_if_survived(features['pclass'], 
+								 features['sex'],
+								 features['age'],
+								 features['siblings'],
+								 features['parents'],
+								 features['fare_price'])
+	
+	response = {"survived": survived}
+	
+	return jsonify(response)
