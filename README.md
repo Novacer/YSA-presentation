@@ -62,3 +62,13 @@ The two methods are equivalent in bash.
 You can run the angular in the same way, replacing ```run_backend.sh``` with ```run_frontend.sh```
 
 Feel free to read the ```.sh``` files to understand how this actually works.
+
+
+## Notes about API Keys
+
+In ```first_api.py``` you may have noticed the line 
+
+```python
+weather = requests.get("http://api.openweathermap.org/data/2.5/weather?q=%s&APPID=API_KEY_HERE" % city)
+```
+For this endpoint to work properly you need to make an account at https://openweathermap.org/api and paste your API key where it says ```API_KEY_HERE```
